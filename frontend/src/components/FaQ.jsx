@@ -39,7 +39,7 @@ function FAQ() {
           <span>{isDropdownOpen === qa_set.question ? "-" : "+"}</span>
         </button>
         {isDropdownOpen === qa_set.question && (
-          <div className="mt-2 p-2 bg-gray-100 text-gray-600 rounded">
+          <div className="mt-2 p-2 bg-gray-700 text-white rounded border-0 border-amber-50">
             <p>{qa_set.answer}</p>
           </div>
         )}

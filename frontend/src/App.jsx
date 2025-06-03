@@ -4,6 +4,7 @@ import FAQ from "./components/FAQ"
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Services from "./components/Services";
 
 function App() {
   
@@ -16,6 +17,7 @@ function App() {
         <h1 className="text-2xl font-bold mb-4">Welcome to the TELCO-WEB-SHOP</h1>
         <p className="text-gray-700">Explore our mobile tariffs and services.</p>
       </div>
+      <Services/>
       <footer className="bg-gray-700 py-4 mt-8">
         <div className="container mx-auto text-center">
           <FAQ/>
