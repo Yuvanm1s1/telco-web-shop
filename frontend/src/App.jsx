@@ -63,11 +63,15 @@ function App() {
       setCartItems([...cartItems, service]);
     }
   };
+  const clearCart=()=>{
+    setCartItems([]);
+    alert("All items have been removed from your cart.");
+  }
 
   return (
     <Routes>
       <Route path="/" element={<Home cartItems={cartItems} addToCart={addToCart} />} />
-      <Route path="/cart" element={<Cartpage cartItems={cartItems}/>} />
+      <Route path="/cart" element={<Cartpage cartItems={cartItems} clearCart={clearCart}/>} />
     </Routes>
   );
 }

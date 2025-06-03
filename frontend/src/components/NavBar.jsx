@@ -101,7 +101,7 @@ function NavBar({cartItems}) {
         <div className="hidden md:flex space-x-4">
           <Cart cartItems={cartItems} />
           
-          <button className="bg-green-200 text-white px-4 py-2 rounded hover:bg-green-700">
+          <button className="bg-green-200 text-white px-4 py-2 rounded hover:bg-green-700  shadow-xl">
             <div className="text-green-500 text-2xl">
                 <FaRegUser />
             </div>
