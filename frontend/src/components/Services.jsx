@@ -1,6 +1,7 @@
 import React from 'react'
-
-function Services() {
+import { useState } from 'react';
+function Services({ addToCart,cartItems }) {
+    
     const services = [
         {
             name: "WhatsApp 12000",
@@ -29,7 +30,36 @@ function Services() {
                 "High-speed internet: Surfing with up to 50 Mbps including 5G",
                 "EU roaming included at no extra charge"
             ]
+        },
+        {
+            name: "WhatsApp 2000",
+            qty: 2000,
+            description: "Flexible use for MB, minutes or SMS. Unlimited texting even after units have been used up. Surfing with up to 50 Mbps including 5G. EU roaming included at no extra charge.",
+            price: 3.00,
+            duration: "4 weeks",
+            simCardFee: 10.00,
+            features: [
+                "2,000 units flexible use for MB, minutes or SMS",
+                "WhatsApp Flat: Unlimited texting even after units have been used up",
+                "High-speed internet: Surfing with up to 50 Mbps including 5G",
+                "EU roaming included at no extra charge"
+            ]
+        },
+        {
+            name: "WhatsApp Unlimited",
+            qty: "Unlimited",
+            description: "Truly unlimited data, calls, and SMS. Unlimited texting even after units have been used up. Surfing with up to 100 Mbps including 5G. EU roaming included at no extra charge.",
+            price: 25.00,
+            duration: "4 weeks",
+            simCardFee: 10.00,
+            features: [
+                "Unlimited data, calls, and SMS",
+                "WhatsApp Flat: Unlimited texting always",
+                "Ultra high-speed internet: Surfing with up to 100 Mbps including 5G",
+                "EU roaming included at no extra charge"
+            ]
         }
+
     ]
   return (
     <div className="flex flex-row gap-4">
@@ -50,8 +80,8 @@ function Services() {
             </div>
             <h1 className='text-lg font-bold mb-2 text-center'>Price: €{service.price.toFixed(2)}</h1>
             <p className='text-gray-600 mb-4'>Duration: {service.duration}</p>
-            <button className='bg-green-900 rounded-lg text-white text-2xl hover:bg-green-700 p-4 w-full'>
-                Add To Cart
+            <button className='bg-green-900 rounded-lg text-white text-2xl hover:bg-green-700 p-4 w-full' onClick={() => addToCart(service)}>
+                {cartItems.some(item => item.name === service.name) ? "Remove from Cart" : "Add To Cart"}
             </button>
         </div>
         </>
