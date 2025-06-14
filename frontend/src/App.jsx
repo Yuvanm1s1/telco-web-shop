@@ -47,15 +47,26 @@
 
 
 // App.jsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Cartpage from "./pages/Cartpage";
 import { createContext } from 'react';
+import { getItem, setItem } from './utils/localStorage';
 export const CartContext=createContext();
 function App() {
-  const [cartItems, setCartItems] = useState([]);
+  // const [cartItems, setCartItems] = useState([]);
+  const [cartItems,setCartItems]=useState(
+    ()=>{
+      const item=getItem("cart_elements");
+      return item || [];
+    }
+  );
+  useEffect(()=>{
+    setItem("cart_elements",cartItems)
+  },[cartItems])
 
+  
   const addToCart = (service) => {
     const exists = cartItems.find(item => item.name === service.name);
     if (exists) {
