@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
-function Services({ addToCart,cartItems }) {
-    
+import { useContext } from 'react';
+import { CartContext } from '../App';
+function Services() {
+    const {cartItems,addToCart,clearCart} = useContext(CartContext);
     const services = [
         {
             name: "WhatsApp 12000",

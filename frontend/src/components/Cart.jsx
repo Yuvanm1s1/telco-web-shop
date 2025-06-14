@@ -1,7 +1,10 @@
 import React from 'react'
 import { FaShoppingCart } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-function Cart({cartItems}) {
+import { useContext } from 'react';
+import { CartContext } from '../App';
+function Cart() {
+const {cartItems,addToCart,clearCart} = useContext(CartContext);
 const navigate = useNavigate();
 
   const handleClick = () => {

@@ -4,7 +4,7 @@ import Cart from './cart';
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaRegUser } from "react-icons/fa6";
 import { getNavItems } from '../services/api';
-function NavBar({cartItems}) {
+function NavBar() {
   const [isDropdownOpen, setDropdownOpen] = useState(null);
   const[navItems, setNavItems] = useState([])
   const toggleDropdown = (menu) => {
@@ -99,7 +99,7 @@ function NavBar({cartItems}) {
 
         
         <div className="hidden md:flex space-x-4">
-          <Cart cartItems={cartItems} />
+          <Cart />
           
           <button className="bg-green-200 text-white px-4 py-2 rounded hover:bg-green-700  shadow-xl">
             <div className="text-green-500 text-2xl">

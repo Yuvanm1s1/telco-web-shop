@@ -51,7 +51,8 @@ import React, { useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Cartpage from "./pages/Cartpage";
-
+import { createContext } from 'react';
+export const CartContext=createContext();
 function App() {
   const [cartItems, setCartItems] = useState([]);
 
@@ -69,10 +70,16 @@ function App() {
   }
 
   return (
+    <>
+    <CartContext.Provider value={{
+      cartItems,addToCart,clearCart
+    }}>
     <Routes>
-      <Route path="/" element={<Home cartItems={cartItems} addToCart={addToCart} />} />
-      <Route path="/cart" element={<Cartpage cartItems={cartItems} clearCart={clearCart}/>} />
+      <Route path="/" element={<Home/>} />
+      <Route path="/cart" element={<Cartpage/>} />
     </Routes>
+    </CartContext.Provider>
+    </>
   );
 }
 

@@ -11,8 +11,10 @@
 
 // export default Cartpage
 import React from 'react';
-
-function Cartpage({ cartItems,clearCart}) {
+import { useContext } from 'react';
+import { CartContext } from '../App';
+function Cartpage() {
+const {cartItems,addToCart,clearCart} = useContext(CartContext);
   return (
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
