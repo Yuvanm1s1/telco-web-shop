@@ -5,7 +5,7 @@ export function setItem(key,value){
         console.log(error)
     }
 }
-
+// converts a JavaScript object, array, or value into a JSON string
 export function getItem(key){
     try{
         const item=window.localStorage.getItem(key);

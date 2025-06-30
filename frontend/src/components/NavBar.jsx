@@ -11,6 +11,7 @@ function NavBar() {
     setDropdownOpen(isDropdownOpen === menu ? null : menu);
   };
   useEffect(()=>{
+    //fetch-->convertto json-->return data -->setNavItems
     const loadNavItems = async ()=>{
         try{
             const data = await getNavItems();
