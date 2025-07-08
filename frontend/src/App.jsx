@@ -2,6 +2,7 @@
 // App.jsx
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import { SignIn, SignUp } from '@clerk/clerk-react';
 import React, { useEffect, useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
@@ -11,6 +12,9 @@ import { getItem, setItem } from './utils/localStorage';
 import CheckOut from './pages/CheckOut';
 export const CartContext=createContext();
 const stripePromise = loadStripe('pk_test_51RgJyPPfkiKYXjnU0ISrCiJsDJOQHkgN7i3Fi0Z6XPwooYVwWWmy6p8vYXdoTnCQ3433uIiHFr9vgoH2r9l1hHKH00B40DQrU6'); // your publishable key
+import PrivateRoute from "./PrivateRoute";
+import Signup from './pages/Signup';
+import Signin from './pages/Signin';
 function App() {
   // const [cartItems, setCartItems] = useState([]);
   const [cartItems,setCartItems]=useState(
@@ -90,9 +94,16 @@ function App() {
       cartItems,addToCart,clearCart,quoteId
     }}>
     <Routes>
+      {/* <Route path="/sign-in" element={<SignIn routing="path" path="/sign-in" />} /> */}
+      <Route path="/sign-up" element={<Signup/>} />
+      {/* <Route path="/sign-in" element={<SignIn routing="path" path="/sign-in" />} /> */}
+      <Route path="/sign-in" element={<Signin/>} />
       <Route path="/" element={<Home/>} />
       <Route path="/cart" element={<Cartpage/>} />
-      <Route path="/checkout" element={<CheckOut/>}/>
+      <Route path="/checkout" element={
+        <PrivateRoute>
+        <CheckOut/>
+        </PrivateRoute>}/>
     </Routes>
     </CartContext.Provider>
     </Elements>
