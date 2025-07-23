@@ -13,13 +13,19 @@ const CheckOut = () => {
   const elements = useElements();
 
   // Fetch the quote from backend using quoteId
-  useEffect(() => {
+  // useEffect(() => {
+  //   if (!quoteId) return;
+  //   fetch(`http://localhost:3000/api/quotes/${quoteId}`)
+  //     .then(res => res.json())
+  //     .then(data => setQuote(data));
+  // }, [quoteId]);
+ useEffect(() => {
     if (!quoteId) return;
-    fetch(`http://localhost:3000/api/quotes/${quoteId}`)
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/quotes/${quoteId}`)
       .then(res => res.json())
-      .then(data => setQuote(data));
+      .then(data => setQuote(data))
+      .catch(err => console.error('Failed to fetch quote:', err));
   }, [quoteId]);
-
   // Download Quote as JSON
   const downloadQuoteJSON = () => {
     if (!quote) return;
@@ -41,7 +47,7 @@ const CheckOut = () => {
     setPaymentSuccess(false);
 
     // 1. Create PaymentIntent on backend
-    const res = await fetch('http://localhost:3000/api/payment/create-payment-intent', {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/payment/create-payment-intent`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ amount: Math.round(quote.total * 100) }), // amount in cents

@@ -44,7 +44,7 @@ function App() {
 
   // If no quoteId, create a new quote in backend
   if (!quoteId) {
-    fetch('http://localhost:3000/api/quotes', {
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/quotes`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ items: cartItems, total })
@@ -56,7 +56,7 @@ function App() {
       });
   } else {
     // If quoteId exists, update the quote in backend
-    fetch(`http://localhost:3000/api/quotes/${quoteId}`, {
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/quotes/${quoteId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ items: cartItems, total })
@@ -81,7 +81,7 @@ function App() {
     }]);
     }
   };
-  const clearCart=()=>{
+  const clearCart=()=>{ 
     setCartItems([]);
     setQuoteId(null);
     setItem("quote_id", null);
@@ -95,9 +95,9 @@ function App() {
     }}>
     <Routes>
       {/* <Route path="/sign-in" element={<SignIn routing="path" path="/sign-in" />} /> */}
-      <Route path="/sign-up" element={<Signup/>} />
+      <Route path="/sign-up/*" element={<Signup/>} />
       {/* <Route path="/sign-in" element={<SignIn routing="path" path="/sign-in" />} /> */}
-      <Route path="/sign-in" element={<Signin/>} />
+      <Route path="/sign-in/*" element={<Signin/>} />
       <Route path="/" element={<Home/>} />
       <Route path="/cart" element={<Cartpage/>} />
       <Route path="/checkout" element={
